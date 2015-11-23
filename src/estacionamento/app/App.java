@@ -29,6 +29,9 @@ public class App {
         // TODO code application logic here
     
         Dao dao = new ClienteDaoDerby();
+        
+        
+        
         dao.saida(joao);
         dao.saida(maria);
         dao.listarTudo();
@@ -37,6 +40,8 @@ public class App {
         dao.entrada(maria);
         dao.listarTudo();
         
+        
+        
         dao.saida(joao);
         dao.listarTudo();
         dao.saida(maria);
@@ -44,6 +49,8 @@ public class App {
         dao.entrada(maria);
         dao.entrada(joao);
         dao.listarTudo();
+        
+        dao.getTempo(maria);
     
     
     }

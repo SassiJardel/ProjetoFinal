@@ -46,10 +46,15 @@ public class ClienteDaoVetor implements Dao{
         System.out.println("Listando..");
     }
     
-    /*@Override
+    @Override
     public void saida(String placa){
         
-    }*/
+    }
+
+    @Override
+    public void getTempo(Cliente c) {
+        
+    }
     
     
 }

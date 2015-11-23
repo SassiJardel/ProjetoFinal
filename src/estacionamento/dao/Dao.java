@@ -14,7 +14,8 @@ import estacionamento.cliente.Cliente;
 public interface Dao {
     public void entrada(Cliente c);
     public void saida(Cliente c);
-    //public void saida(String placa);
+    public void saida(String placa);
     public void listarTudo();
+    public void getTempo(Cliente c);
     
 }
