@@ -6,12 +6,20 @@
 package estacionamento.dao;
 
 import estacionamento.cliente.Cliente;
+import java.util.*;
+
+
 
 /**
  *
  * @author Jardel
  */
 public class ClienteDaoVetor implements Dao{
+    
+    Date date = new Date();
+    Calendar calendar = GregorianCalendar.getInstance();
+    int hora = calendar.get(Calendar.HOUR);
+
     
     private Cliente lista[];
     private int posicao;
@@ -24,13 +32,13 @@ public class ClienteDaoVetor implements Dao{
     @Override
     public void entrada(Cliente c){
         lista[posicao] = c;
-        System.out.println("O cliente \""+ c.getPlaca()+ "\" realizou entrada");
+        System.out.println("O cliente \""+ c.getPlaca()+" "+ c.getCarro() +"\" realizou entrada as "+ hora + "h");
         posicao++;
     }
     
     @Override
     public void saida(Cliente c){
-        System.out.println("O cliente \""+ c.getPlaca()+"\" realizou saida");
+        System.out.println("O cliente \""+ c.getPlaca()+ " " + c.getCarro() +"\" realizou saida às: "+hora+"h");
     }
     
     @Override

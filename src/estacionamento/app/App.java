@@ -8,6 +8,7 @@ package estacionamento.app;
 import estacionamento.cliente.Cliente;
 import estacionamento.dao.ClienteDaoDerby;
 import estacionamento.dao.Dao;
+import java.util.*;
 
 /**
  *
@@ -15,6 +16,9 @@ import estacionamento.dao.Dao;
  */
 public class App {
 
+    
+    Date date = new Date();
+    Calendar calendar = GregorianCalendar.getInstance();
     /**
      * @param args the command line arguments
      */
@@ -36,6 +40,9 @@ public class App {
         dao.saida(joao);
         dao.listarTudo();
         dao.saida(maria);
+        dao.listarTudo();
+        dao.entrada(maria);
+        dao.entrada(joao);
         dao.listarTudo();
     
     

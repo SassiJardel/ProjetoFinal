@@ -5,6 +5,8 @@
  */
 package estacionamento.cliente;
 
+
+
 /**
  *
  * @author Jardel
@@ -13,6 +15,9 @@ public class Cliente {
     
     private String placa;
     private String carro;
+   
+    
+    
     
     public Cliente(){
         
@@ -21,6 +26,7 @@ public class Cliente {
     public Cliente(String placa, String carro){
         this.placa = placa;
         this.carro = carro;
+       
     }
     
     public String getPlaca(){
@@ -38,4 +44,6 @@ public class Cliente {
     public void setCarro(String carro){
         this.carro = carro;
     }
+    
+    
 }

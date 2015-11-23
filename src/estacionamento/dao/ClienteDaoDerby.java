@@ -11,12 +11,18 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.*;
+
 
 /**
  *
  * @author Jardel
  */
 public class ClienteDaoDerby implements Dao {
+    
+    Date date = new Date();
+    Calendar calendar = GregorianCalendar.getInstance();
+    String horaEntrada = Integer.toString(calendar.get(Calendar.HOUR))+ ":" + Integer.toString(calendar.get(Calendar.MINUTE))+"h";
     
     Statement stmt;
     
@@ -35,8 +41,8 @@ public class ClienteDaoDerby implements Dao {
     
     @Override
     public void entrada(Cliente c) {
-        String instrucao = "INSERT INTO CLIENTE (PLACA, CARRO) VALUES ("
-        + "'" +  c.getPlaca() + "', " + "'" + c.getCarro() + "')";
+        String instrucao = "INSERT INTO CLIENTE (PLACA, CARRO, HORA) VALUES ("
+        + "'" +  c.getPlaca() + "', " + "'" + c.getCarro() +  "', " + "'"+ horaEntrada + "')";
         System.out.println(instrucao);
         try{
             stmt.executeUpdate(instrucao);
