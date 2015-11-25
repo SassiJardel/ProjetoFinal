@@ -58,21 +58,6 @@ public class ClienteDaoDerby implements Dao {
     
     @Override
     public void saida(Cliente c){
-        String instrucaoUm = "SELECT TEMPO FROM CLIENTE WHERE PLACA = " + "'" + c.getPlaca() + "'";
-        System.out.println(instrucaoUm);
-        try{
-            ResultSet rs = stmt.executeQuery(instrucaoUm);
-            
-            while (rs.next()){
-                tempoEntrada = rs.getInt("TEMPO");
-                System.out.println("Tempo de entrada: " +  rs.getInt("TEMPO"));
-                
-            }
-            
-        }catch(SQLException se){
-            System.out.println("Mensagem: " + se.getMessage());
-        }
-        
         String instrucao = "DELETE FROM CLIENTE WHERE PLACA = " + "'" + c.getPlaca() + "'";
         System.out.println(instrucao);
         try{
@@ -82,9 +67,9 @@ public class ClienteDaoDerby implements Dao {
         }
     }
     
-    public int getTempoEntrada(){
-        return tempoEntrada;
-    }
+    
+    
+    
     
     
     
@@ -126,7 +111,7 @@ public class ClienteDaoDerby implements Dao {
             ResultSet rs = stmt.executeQuery(instrucao);
             
             while (rs.next()){
-                System.out.println("Placa: " + rs.getString("PLACA") + " Carro: " + rs.getString("CARRO"));
+                System.out.println("Placa: " + rs.getString("PLACA") + " Carro: " + rs.getString("CARRO") + " Horário de entrada: " + rs.getString("ENTRADA"));
             }
             
         }catch(SQLException se){

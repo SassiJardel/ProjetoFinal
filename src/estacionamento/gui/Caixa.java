@@ -26,6 +26,8 @@ public class Caixa extends javax.swing.JFrame {
     Date date = new Date();
     Calendar calendar = GregorianCalendar.getInstance();
     int horaAtual = calendar.get(Calendar.HOUR);
+    int minutoAtual = calendar.get(Calendar.MINUTE);
+    int tempo = horaAtual*3600+minutoAtual*60;
     
     
     
@@ -33,6 +35,7 @@ public class Caixa extends javax.swing.JFrame {
     
     
     Dao dao;
+    Cliente c = new Cliente();
     
     public void cleanText(){
         jtfPlaca.setText("");
@@ -161,9 +164,10 @@ public class Caixa extends javax.swing.JFrame {
         }
             
         
-        Cliente c = new Cliente();
+        //Cliente c = new Cliente();
         c.setPlaca(placa);
         c.setCarro(carro);
+        c.setHoraEntrada(tempo);
         dao.entrada(c);
         //cleanText();
             
@@ -181,18 +185,23 @@ public class Caixa extends javax.swing.JFrame {
 
     private void saidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saidaActionPerformed
         // TODO add your handling code here:
-        Cliente c = new Cliente();
-        System.out.println(c.getTempoEntrada());
         
-        //dao.saida(jtfPlaca.getText());
         
-        int tempoUtilizado = horaAtual - c.getTempoEntrada();
         
-        if(tempoUtilizado/3600 < 1){
-            JOptionPane.showMessageDialog(null, "Valor total: " + 10 + " reais");
+        
+        int tempoTotal = tempo - c.getHoraEntrada();
+        
+        
+        
+        if(tempoTotal/3600 < 1){
+            JOptionPane.showMessageDialog(null, "Valor total: "+ 10+" reais");
         }else{
-            JOptionPane.showMessageDialog(null, "Valor total: R$" + (10+(tempoUtilizado/3600*4)) + " reais");
+            JOptionPane.showMessageDialog(null, "Valor total: "+ (10+(tempoTotal/3600)*4));
         }
+        
+        dao.saida(jtfPlaca.getText());
+        
+        
         
         
         

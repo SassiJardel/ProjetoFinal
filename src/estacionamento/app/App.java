@@ -27,16 +27,16 @@ public class App {
         
         new Caixa().setVisible(true);
                
-        /*Cliente joao = new Cliente("BJR-1917", "Fusca");
-        Cliente maria = new Cliente("RJB-0666", "Opala");
+        //Cliente joao = new Cliente("BJR-1917", "Fusca", 1);
+       // Cliente maria = new Cliente("RJB-0666", "Opala", 2);
         // TODO code application logic here
     
-        Dao dao = new ClienteDaoDerby();
+       // Dao dao = new ClienteDaoDerby();
         
         
         
-        dao.saida(joao);
-        dao.saida(maria);*/
+        //dao.saida(joao);
+       // dao.saida(maria);
       /*  dao.listarTudo();
         dao.entrada(joao);
         dao.listarTudo();
