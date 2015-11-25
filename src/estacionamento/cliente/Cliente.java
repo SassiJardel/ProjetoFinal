@@ -16,7 +16,7 @@ public class Cliente {
     
     private String placa;
     private String carro;
-    private int horaEntrada;
+    private int tempo;
    
     
     
@@ -25,10 +25,10 @@ public class Cliente {
         
     }
     
-    public Cliente(String placa, String carro, int hora){
+    public Cliente(String placa, String carro, int tempo){
         this.placa = placa;
         this.carro = carro;
-        this.horaEntrada = hora;
+        this.tempo = tempo;
        
     }
     
@@ -49,11 +49,11 @@ public class Cliente {
     }
     
     public int getHoraEntrada(){
-        return horaEntrada;
+        return tempo;
     }
     
-    public void setHoraEntrada(int horaEntrada){
-        this.horaEntrada = horaEntrada;
+    public void setHoraEntrada(int tempo){
+        this.tempo = tempo;
     }
     
     

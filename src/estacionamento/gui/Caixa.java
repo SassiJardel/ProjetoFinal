@@ -22,19 +22,14 @@ import javax.swing.JOptionPane;
  */
 public class Caixa extends javax.swing.JFrame {
     
-    int tempoEntrada;
     Date date = new Date();
     Calendar calendar = GregorianCalendar.getInstance();
-    int horaAtual = calendar.get(Calendar.HOUR);
-    int minutoAtual = calendar.get(Calendar.MINUTE);
-    int tempo = horaAtual*3600+minutoAtual*60;
-    
-    
-    
-    Statement stmt;
-    
-    
+    int horaAtual;
+    int minutoAtual;
+    int tempo;
+     
     Dao dao;
+    
     Cliente c = new Cliente();
     
     public void cleanText(){
@@ -50,8 +45,7 @@ public class Caixa extends javax.swing.JFrame {
     public Caixa() {
         initComponents();
         dao = new ClienteDaoDerby();
-        
-        
+
     }
 
     /**
@@ -157,20 +151,22 @@ public class Caixa extends javax.swing.JFrame {
         
         String placa = jtfPlaca.getText();
         String carro = jtfCarro.getText();
+        date = new Date();
+        calendar = GregorianCalendar.getInstance();
+        horaAtual = calendar.get(Calendar.HOUR);
+        minutoAtual = calendar.get(Calendar.MINUTE);
+        tempo = horaAtual*3600+minutoAtual*60;
         
         if(placa.isEmpty()||carro.isEmpty()){
             JOptionPane.showMessageDialog(null, "Por favor, preencha todos os campos");
             return;
         }
-            
         
-        //Cliente c = new Cliente();
         c.setPlaca(placa);
         c.setCarro(carro);
         c.setHoraEntrada(tempo);
         dao.entrada(c);
-        //cleanText();
-            
+        cleanText();
             
     }//GEN-LAST:event_entradaActionPerformed
 
@@ -185,28 +181,21 @@ public class Caixa extends javax.swing.JFrame {
 
     private void saidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saidaActionPerformed
         // TODO add your handling code here:
-        
-        
-        
+
         
         int tempoTotal = tempo - c.getHoraEntrada();
-        
-        
-        
+      
         if(tempoTotal/3600 < 1){
             JOptionPane.showMessageDialog(null, "Valor total: "+ 10+" reais");
         }else{
-            JOptionPane.showMessageDialog(null, "Valor total: "+ (10+(tempoTotal/3600)*4));
+            JOptionPane.showMessageDialog(null, "Valor total: "+ (10+(tempoTotal/3600)*2.5));
         }
-        
+       
+         
         dao.saida(jtfPlaca.getText());
+       
         
-        
-        
-        
-        
-        
-       // cleanText();
+        cleanText();
     }//GEN-LAST:event_saidaActionPerformed
 
     /**

@@ -51,10 +51,4 @@ public class ClienteDaoArrayList implements Dao{
     public void saida(String placa){
         System.out.println("Cliente de placa " + placa + " realizou saída");
     }
-
-   // @Override
-   // public void getTempo(Cliente c) {
-        
-   // }
-    
 }

@@ -16,7 +16,4 @@ public interface Dao {
     public void saida(Cliente c);
     public void saida(String placa);
     public void listarTudo();
-    
-    //public void getTempo(Cliente c);
-    
 }

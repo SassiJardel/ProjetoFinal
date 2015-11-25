@@ -20,15 +20,6 @@ import java.util.*;
  */
 public class ClienteDaoDerby implements Dao {
     
-    Date date = new Date();
-    Calendar calendar = GregorianCalendar.getInstance();
-    int horaAtual = calendar.get(Calendar.HOUR);
-    int minutoAtual = calendar.get(Calendar.MINUTE);
-    String horaEntrada = Integer.toString(horaAtual)+ ":" + Integer.toString(minutoAtual)+"h";
-    int tempo = horaAtual*3600+minutoAtual*60;
-    int tempoEntrada;
-    
-    
     Statement stmt;
     
     public ClienteDaoDerby(){
@@ -46,8 +37,17 @@ public class ClienteDaoDerby implements Dao {
     
     @Override
     public void entrada(Cliente c) {
+        
+        Date date = new Date();
+        Calendar calendar = GregorianCalendar.getInstance();
+        int horaAtual = calendar.get(Calendar.HOUR);
+        int minutoAtual = calendar.get(Calendar.MINUTE);
+        String horaEntrada = Integer.toString(horaAtual)+ ":" + Integer.toString(minutoAtual)+"h";
+        int tempo = horaAtual*3600+minutoAtual*60;
+        int tempoEntrada;
+        
         String instrucao = "INSERT INTO CLIENTE (PLACA, CARRO, ENTRADA, TEMPO) VALUES ("
-        + "'" +  c.getPlaca() + "', " + "'" + c.getCarro() +  "', " + "'"+ horaEntrada + "', "+"'" +tempo+"')";
+        + "'" +  c.getPlaca() + "', " + "'" + c.getCarro() +  "', " + "'"+ horaEntrada + "', "+"'" +c.getHoraEntrada()+"')";
         System.out.println(instrucao);
         try{
             stmt.executeUpdate(instrucao);
@@ -67,12 +67,6 @@ public class ClienteDaoDerby implements Dao {
         }
     }
     
-    
-    
-    
-    
-    
-    
     @Override
     public void saida(String placa){
         String instrucao = "DELETE FROM CLIENTE WHERE PLACA = " + "'" + placa + "'";
@@ -84,24 +78,6 @@ public class ClienteDaoDerby implements Dao {
         }
         
     }
-    
-   /* @Override
-    public void saida(Cliente c){
-        String instrucao = "SELECT TEMPO FROM CLIENTE WHERE PLACA = " + "'" + c.getPlaca() + "'";
-        System.out.println(instrucao);
-        try{
-            ResultSet rs = stmt.executeQuery(instrucao);
-            
-            while (rs.next()){
-                System.out.println("Tempo de entrada: " +  rs.getInt("TEMPO"));
-                
-            }
-            
-        }catch(SQLException se){
-            System.out.println("Mensagem: " + se.getMessage());
-        }
-        
-    }*/
     
     @Override
     public void listarTudo(){
