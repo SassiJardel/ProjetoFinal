@@ -8,6 +8,12 @@ package estacionamento.gui;
 import estacionamento.cliente.Cliente;
 import estacionamento.dao.ClienteDaoDerby;
 import estacionamento.dao.Dao;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,6 +22,16 @@ import javax.swing.JOptionPane;
  */
 public class Caixa extends javax.swing.JFrame {
     
+    int tempoEntrada;
+    Date date = new Date();
+    Calendar calendar = GregorianCalendar.getInstance();
+    int horaAtual = calendar.get(Calendar.HOUR);
+    
+    
+    
+    Statement stmt;
+    
+    
     Dao dao;
     
     public void cleanText(){
@@ -23,6 +39,7 @@ public class Caixa extends javax.swing.JFrame {
         jtfCarro.setText("");
 
     }
+    
 
     /**
      * Creates new form Caixa
@@ -30,6 +47,8 @@ public class Caixa extends javax.swing.JFrame {
     public Caixa() {
         initComponents();
         dao = new ClienteDaoDerby();
+        
+        
     }
 
     /**
@@ -162,9 +181,23 @@ public class Caixa extends javax.swing.JFrame {
 
     private void saidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saidaActionPerformed
         // TODO add your handling code here:
-        dao.saida(jtfPlaca.getText());
+        Cliente c = new Cliente();
+        System.out.println(c.getTempoEntrada());
         
-        cleanText();
+        //dao.saida(jtfPlaca.getText());
+        
+        int tempoUtilizado = horaAtual - c.getTempoEntrada();
+        
+        if(tempoUtilizado/3600 < 1){
+            JOptionPane.showMessageDialog(null, "Valor total: " + 10 + " reais");
+        }else{
+            JOptionPane.showMessageDialog(null, "Valor total: R$" + (10+(tempoUtilizado/3600*4)) + " reais");
+        }
+        
+        
+        
+        
+       // cleanText();
     }//GEN-LAST:event_saidaActionPerformed
 
     /**

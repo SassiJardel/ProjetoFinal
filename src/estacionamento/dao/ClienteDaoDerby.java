@@ -26,7 +26,7 @@ public class ClienteDaoDerby implements Dao {
     int minutoAtual = calendar.get(Calendar.MINUTE);
     String horaEntrada = Integer.toString(horaAtual)+ ":" + Integer.toString(minutoAtual)+"h";
     int tempo = horaAtual*3600+minutoAtual*60;
-    
+    int tempoEntrada;
     
     
     Statement stmt;
@@ -58,6 +58,21 @@ public class ClienteDaoDerby implements Dao {
     
     @Override
     public void saida(Cliente c){
+        String instrucaoUm = "SELECT TEMPO FROM CLIENTE WHERE PLACA = " + "'" + c.getPlaca() + "'";
+        System.out.println(instrucaoUm);
+        try{
+            ResultSet rs = stmt.executeQuery(instrucaoUm);
+            
+            while (rs.next()){
+                tempoEntrada = rs.getInt("TEMPO");
+                System.out.println("Tempo de entrada: " +  rs.getInt("TEMPO"));
+                
+            }
+            
+        }catch(SQLException se){
+            System.out.println("Mensagem: " + se.getMessage());
+        }
+        
         String instrucao = "DELETE FROM CLIENTE WHERE PLACA = " + "'" + c.getPlaca() + "'";
         System.out.println(instrucao);
         try{
@@ -66,6 +81,12 @@ public class ClienteDaoDerby implements Dao {
             System.out.println("Mensagem: " + se.getMessage());
         }
     }
+    
+    public int getTempoEntrada(){
+        return tempoEntrada;
+    }
+    
+    
     
     @Override
     public void saida(String placa){
@@ -79,22 +100,23 @@ public class ClienteDaoDerby implements Dao {
         
     }
     
-    @Override
-    public void getTempo(Cliente c){
+   /* @Override
+    public void saida(Cliente c){
         String instrucao = "SELECT TEMPO FROM CLIENTE WHERE PLACA = " + "'" + c.getPlaca() + "'";
         System.out.println(instrucao);
         try{
             ResultSet rs = stmt.executeQuery(instrucao);
             
             while (rs.next()){
-                System.out.println("Tempo utilzado: " + (tempo - rs.getInt("TEMPO")));
+                System.out.println("Tempo de entrada: " +  rs.getInt("TEMPO"));
+                
             }
             
         }catch(SQLException se){
             System.out.println("Mensagem: " + se.getMessage());
         }
         
-    }
+    }*/
     
     @Override
     public void listarTudo(){
@@ -111,4 +133,7 @@ public class ClienteDaoDerby implements Dao {
             System.out.println("Mensagem: " + se.getMessage());
         }
     }
+
+    
+
 }

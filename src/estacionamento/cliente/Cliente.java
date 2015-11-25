@@ -7,6 +7,7 @@ package estacionamento.cliente;
 
 
 
+
 /**
  *
  * @author Jardel
@@ -15,6 +16,7 @@ public class Cliente {
     
     private String placa;
     private String carro;
+    private int tempoEntrada;
    
     
     
@@ -23,9 +25,10 @@ public class Cliente {
         
     }
     
-    public Cliente(String placa, String carro){
+    public Cliente(String placa, String carro, int tempoEntrada){
         this.placa = placa;
         this.carro = carro;
+        this.tempoEntrada = tempoEntrada;
        
     }
     
@@ -43,6 +46,14 @@ public class Cliente {
     
     public void setCarro(String carro){
         this.carro = carro;
+    }
+    
+    public int getTempoEntrada(){
+        return tempoEntrada;
+    }
+    
+    public void setTempoEntrada(int tempoEntrada){
+        this.tempoEntrada = tempoEntrada;
     }
     
     

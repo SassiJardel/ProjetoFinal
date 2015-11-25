@@ -8,6 +8,7 @@ package estacionamento.app;
 import estacionamento.cliente.Cliente;
 import estacionamento.dao.ClienteDaoDerby;
 import estacionamento.dao.Dao;
+import estacionamento.gui.Caixa;
 import java.util.*;
 
 /**
@@ -23,8 +24,10 @@ public class App {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        new Caixa().setVisible(true);
                
-        Cliente joao = new Cliente("BJR-1917", "Fusca");
+        /*Cliente joao = new Cliente("BJR-1917", "Fusca");
         Cliente maria = new Cliente("RJB-0666", "Opala");
         // TODO code application logic here
     
@@ -33,24 +36,24 @@ public class App {
         
         
         dao.saida(joao);
-        dao.saida(maria);
-        dao.listarTudo();
+        dao.saida(maria);*/
+      /*  dao.listarTudo();
         dao.entrada(joao);
         dao.listarTudo();
         dao.entrada(maria);
-        dao.listarTudo();
+        dao.listarTudo();*/
         
         
         
-        dao.saida(joao);
-        dao.listarTudo();
-        dao.saida(maria);
-        dao.listarTudo();
-        dao.entrada(maria);
-        dao.entrada(joao);
-        dao.listarTudo();
+      //  dao.saida(joao);
+        //dao.listarTudo();
+      //  dao.saida(maria);
+     //   dao.listarTudo();
+     //   dao.entrada(maria);
+     //   dao.entrada(joao);
+     //   dao.listarTudo();
         
-        dao.getTempo(maria);
+        
     
     
     }

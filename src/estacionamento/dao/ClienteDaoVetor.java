@@ -51,10 +51,10 @@ public class ClienteDaoVetor implements Dao{
         
     }
 
-    @Override
+   /* @Override
     public void getTempo(Cliente c) {
         
-    }
+    }*/
     
     
 }
