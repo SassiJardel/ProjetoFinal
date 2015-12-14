@@ -17,9 +17,7 @@ public class Cliente {
     private String placa;
     private String carro;
     private int tempo;
-   
-    
-    
+       
     
     public Cliente(){
         

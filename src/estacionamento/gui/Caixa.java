@@ -13,7 +13,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
+//import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
 
 /**
@@ -23,7 +23,7 @@ import javax.swing.JOptionPane;
 public class Caixa extends javax.swing.JFrame {
     
     Date date = new Date();
-    Calendar calendar = GregorianCalendar.getInstance();
+    Calendar calendar = Calendar.getInstance();
     int horaAtual;
     int minutoAtual;
     int tempo;
@@ -152,8 +152,8 @@ public class Caixa extends javax.swing.JFrame {
         String placa = jtfPlaca.getText();
         String carro = jtfCarro.getText();
         date = new Date();
-        calendar = GregorianCalendar.getInstance();
-        horaAtual = calendar.get(Calendar.HOUR);
+        calendar = Calendar.getInstance();
+        horaAtual = calendar.get(Calendar.HOUR_OF_DAY);
         minutoAtual = calendar.get(Calendar.MINUTE);
         tempo = horaAtual*3600+minutoAtual*60;
         

@@ -6,6 +6,7 @@
 package estacionamento.dao;
 
 import estacionamento.cliente.Cliente;
+import java.util.ArrayList;
 
 /**
  *
@@ -16,4 +17,5 @@ public interface Dao {
     public void saida(Cliente c);
     public void saida(String placa);
     public void listarTudo();
+    
 }

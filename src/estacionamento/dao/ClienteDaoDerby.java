@@ -58,7 +58,15 @@ public class ClienteDaoDerby implements Dao {
     
     @Override
     public void saida(Cliente c){
-        String instrucao = "DELETE FROM CLIENTE WHERE PLACA = " + "'" + c.getPlaca() + "'";
+        
+        Date date = new Date();
+        Calendar calendar = GregorianCalendar.getInstance();
+        int horaAtual = calendar.get(Calendar.HOUR);
+        int minutoAtual = calendar.get(Calendar.MINUTE);
+        String horaSaida = Integer.toString(horaAtual)+ ":" + Integer.toString(minutoAtual)+"h";
+                
+        String instrucao = "UPDATE CLIENTE SET SAIDA =" + "'" + horaSaida + "'" + "WHERE PLACA = " + "'" + c.getPlaca() + "'";//" FROM CLIENTE WHERE PLACA = " + "'" + c.getPlaca() + "'";
+        
         System.out.println(instrucao);
         try{
             stmt.executeUpdate(instrucao);
@@ -67,9 +75,20 @@ public class ClienteDaoDerby implements Dao {
         }
     }
     
+   /* public ArrayList<Cliente> getClientes(){
+        String instrucao = "SELECT * FROM CLIENTE";
+        ArrayList<Cliente> clientes = new ArrayList<>;//JLIST MOODLE
+    }*/
+    
     @Override
     public void saida(String placa){
-        String instrucao = "DELETE FROM CLIENTE WHERE PLACA = " + "'" + placa + "'";
+        Date date = new Date();
+        Calendar calendar = GregorianCalendar.getInstance();
+        int horaAtual = calendar.get(Calendar.HOUR);
+        int minutoAtual = calendar.get(Calendar.MINUTE);
+        String horaSaida = Integer.toString(horaAtual)+ ":" + Integer.toString(minutoAtual)+"h";
+        
+        String instrucao = "UPDATE CLIENTE SET SAIDA =" + "'" + horaSaida + "'" + "WHERE PLACA = " + "'" + placa + "'";
         System.out.println(instrucao);
         try{
             stmt.executeUpdate(instrucao);
